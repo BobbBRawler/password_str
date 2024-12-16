@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Matcher</title>
+    <style>
+        .match, .no-match {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .match {
+            color: green;
+        }
+        .no-match {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Password Matcher</h2>
+    
+    <label for="password">Enter Password: </label>
+    <input type="password" id="password" placeholder="Enter password">
+    <br><br>
+
+    <label for="confirmPassword">Confirm Password: </label>
+    <input type="password" id="confirmPassword" placeholder="Confirm password">
+    <br><br>
+    
+    <div id="passwordMatchMessage" class="match"></div>
+
+    <script>
+        // Get the password and confirm password elements
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const message = document.getElementById('passwordMatchMessage');
+        
+        // Add event listeners for both fields
+        password.addEventListener('input', checkPasswordMatch);
+        confirmPassword.addEventListener('input', checkPasswordMatch);
+
+        function checkPasswordMatch() {
+            if (password.value === confirmPassword.value && password.value !== "") {
+                message.textContent = "Passwords Match!";
+                message.className = "match"; // Green color
+            } else {
+                message.textContent = "Passwords do not match!";
+                message.className = "no-match"; // Red color
+            }
+        }
+    </script>
+</body>
+</html>
